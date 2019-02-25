@@ -13,3 +13,6 @@ Script generates `output` file which contains PHP output
 
 ## Adding new tests
 In tests directory each test is placed in directory by its expected return code
+
+## TODO
+Testing invalid arguments
