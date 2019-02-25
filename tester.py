@@ -7,7 +7,7 @@ from subprocess import call
 
 def run_test(executable, parser, test):
     """Run test and return exit code"""
-    return call("{} {} < {} > output".format(executable, parser, test), shell=True)
+    return call("{} {} < {} >> output".format(executable, parser, test), shell=True)
 
 
 def __main__():
@@ -15,7 +15,7 @@ def __main__():
     arr = os.listdir(test_directory)
     parser = os.path.realpath(sys.argv[2])             # source to parser.php
     executable = sys.argv[1]
-
+    call("> output", shell=True)
     for ret_code in arr:
         if ret_code.isdigit():
             dest = test_directory + "/" + ret_code
