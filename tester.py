@@ -3,17 +3,18 @@
 import os
 import sys
 from subprocess import call
+import shlex
 
 
 def run_test(executable, parser, test):
     """Run test and return exit code"""
-    return call("{} {} < {} >> output".format(executable, parser, test), shell=True)
+    return call("{} {} < {} >> output".format(executable, shlex.quote(parser), shlex.quote(test)), shell=True)
 
 
 def __main__():
-    test_directory = os.path.realpath(sys.argv[3])     # directory with test bundle
+    test_directory = os.path.realpath(sys.argv[3])   # directory with test bundle
     arr = os.listdir(test_directory)
-    parser = os.path.realpath(sys.argv[2])             # source to parser.php
+    parser = os.path.realpath(sys.argv[2])                        # source to parser.php
     executable = sys.argv[1]
     call("> output", shell=True)
     for ret_code in arr:
